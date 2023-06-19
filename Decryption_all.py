@@ -34,4 +34,3 @@ if __name__ == '__main__':
     RcLy = Tent(N, Yor, a,  t0)
     reXLst1, reYLst1 = jiemi(reXLst, reYLst, RcLx, RcLy)
     Write_XYPo_toshp(fn_r, fn_w, reXLst1, reYLst1)
-    print("finish")
