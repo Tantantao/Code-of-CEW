@@ -1,6 +1,6 @@
 from Encryption_single import *
 
-"""Scramble decryption"""
+"""Tent scramble decryption"""
 
 
 def Tent(feature_num, XList, YList, Xor, Yor, a, t0):
@@ -51,6 +51,7 @@ def Tent(feature_num, XList, YList, Xor, Yor, a, t0):
     return XList, YList
 
 
+"""PWLCM scramble decryption"""
 def PWLCM(feature_num, XList, YList, x0, B, t0):
     for i in range(0, feature_num):
         N = len(XList[i])
