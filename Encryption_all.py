@@ -107,7 +107,6 @@ def Tent(N, Xor, a, t0):
 def PWLCM(x0, B, t0, N):
     xi = x0
     Li, RcLi = [], []
-    # 混沌序列生成
     for s in range(0, t0 + N):
         if 0 <= xi < B:
             xi = xi / B
