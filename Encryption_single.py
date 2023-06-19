@@ -19,14 +19,14 @@ def Read_XYPo_fromshp(ori_shp):
             x += [float(xy[0])]
             y += [float(xy[1])]
             po += [(float(xy[0]), float(xy[1]))]
-        X_sum += x  # 总的X坐标集合
+        X_sum += x  
         Y_sum += y
         XLst.append(x), YLst.append(y), PoLst.append(po)
     ds.Destroy()
     return XLst, YLst, PoLst, feature_num, X_sum, Y_sum
 
 
-'''写出矢量数据'''
+'''Write out vector map data'''
 
 
 def Write_XYPo_toshp(ori_shp, en_shp, XLst_emb, YLst_emb):
@@ -87,7 +87,7 @@ def Tent(feature_num, XList, YList, Xor, Yor, a, t0):
         for j in cLx:
             xi = int(N * j) % N
             RcLx.append(xi)
-        #  X坐标置乱
+        #  X coordinate encryption
         for j in range(0, len(XList[i])):
             XList[i][j], XList[i][RcLx[j]] = XList[i][RcLx[j]], XList[i][j]
     RXLst = XList
@@ -106,6 +106,7 @@ def Tent(feature_num, XList, YList, Xor, Yor, a, t0):
         for n in cLy:
             yi = int(N * n) % N
             RcLy.append(yi)
+        #  Y coordinate encryption
         for n in range(0, len(YList[m])):
             YList[m][n], YList[m][RcLy[n]] = YList[m][RcLy[n]], YList[m][n]
     RYLst = YList
@@ -121,7 +122,6 @@ def PWLCM(feature_num, XList, YList, x0, B, t0):
         N = len(XList[i])
         xi = x0
         Li, RcLi = [], []
-        # 混沌序列生成
         for s in range(0, t0 + N):
             if 0 <= xi < B:
                 xi = xi / B
@@ -132,11 +132,10 @@ def PWLCM(feature_num, XList, YList, x0, B, t0):
             else:
                 xi = (1 - xi) / B
             Li.append(xi)
-        cLi = Li[t0:]  # 舍去固定次数产生的迭代值
-        # 向下取整
+        cLi = Li[t0:]  
         for j in cLi:
             x = int(N * j) % N
-            RcLi.append(x)  # 取整后的混沌序列
+            RcLi.append(x)  
         for j in range(0, len(XList[i])):
             XList[i][j], XList[i][RcLi[j]] = XList[i][RcLi[j]], XList[i][j]
         for n in range(0, len(YList[i])):
@@ -147,8 +146,8 @@ def PWLCM(feature_num, XList, YList, x0, B, t0):
 if __name__ == '__main__':
     fn_r = r'The absolute path of the vector map data to be encrypted'
     XLst, YLst, PLst, feature_num, X_sum, Y_sum = Read_XYPo_fromshp(fn_r)  # read vector data
-    Xor, Yor = 0.45, 0.55  # 实验初始值
-    a, t0 = 1.5, 1000  # 参数，t0为迭代次数
+    Xor, Yor = 0.45, 0.55  
+    a, t0 = 1.5, 1000  
     x0, B, = 0.45, 0.25
     RXLst, RYLst = Tent(feature_num, XLst, YLst, Xor, Yor, a, t0)
     RXLst2, RYLst2 = PWLCM(feature_num, RXLst, RYLst, x0, B, t0)
