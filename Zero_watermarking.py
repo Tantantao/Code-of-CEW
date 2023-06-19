@@ -120,8 +120,8 @@ if __name__ == '__main__':
     Arnold_img = Arnold_Encrypt(img_deal)  # scramble image
     # Control shuffling times
     # for i in range(0, 9):
-    #     Arnold_img = Arnold_Encrypt(Arnold_img)  # arnold_img置乱后水印
-    Lst_WaterMark = Arnold_img.flatten()  # 降维
+    #     Arnold_img = Arnold_Encrypt(Arnold_img)  
+    Lst_WaterMark = Arnold_img.flatten()  
     fn_r = r"D:\CEWcode\Map\Boundaries.shp"
     XLst, YLst, feature_num = Read_Shapfile(fn_r)  # read raw vector data
     List_Fea = Construction(XLst, feature_num, Lst_WaterMark)
