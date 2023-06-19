@@ -146,6 +146,7 @@ def PWLCM(feature_num, XList, YList, x0, B, t0):
 if __name__ == '__main__':
     fn_r = r'The absolute path of the vector map data to be encrypted'
     XLst, YLst, PLst, feature_num, X_sum, Y_sum = Read_XYPo_fromshp(fn_r)  # read vector data
+    # parameter
     Xor, Yor = 0.45, 0.55  
     a, t0 = 1.5, 1000  
     x0, B, = 0.45, 0.25
