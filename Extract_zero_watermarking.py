@@ -13,7 +13,6 @@ def Arnold_Decrypt(image):
     for time in range(shuffle_times):
         for ori_x in range(h):
             for ori_y in range(w):
-                # 按照公式坐标变换
                 new_x = ((a * b + 1) * ori_x + (-b) * ori_y) % N
                 new_y = ((-a) * ori_x + ori_y) % N
                 decode_image[new_x, new_y] = image[ori_x, ori_y]
