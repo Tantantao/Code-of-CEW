@@ -74,4 +74,4 @@ if __name__ == '__main__':
     fn = r'Absolute path to vector map data'
     XLst1, YLst1, feature_num1 = Read_Shapfile(fn)
     X_sum1, Y_sum1 = GetSum(XLst1, YLst1)
-    print(len(X_sum1))
+    
